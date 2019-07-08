@@ -68,5 +68,5 @@ class Scraper
   end
 
 end
- scraper = Scraper.new
- scraper.scrape
+# scraper = Scraper.new
+# scraper.scrape

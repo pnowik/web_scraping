@@ -31,16 +31,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/file.csv">
-          <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="-9836" />
-          </provider>
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -123,16 +113,15 @@
       <option name="presentableId" value="Default" />
       <updated>1561537644160</updated>
       <workItem from="1561537645704" duration="16714000" />
-      <workItem from="1562568099421" duration="4232000" />
+      <workItem from="1562568099421" duration="4538000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20946000" />
+    <option name="totallyTimeSpent" value="21252000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-2" width="1920" height="1082" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10779082" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -201,9 +190,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/file.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="-9836" />
-      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
