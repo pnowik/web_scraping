@@ -26,46 +26,46 @@ class Scraper
         doc = Nokogiri::HTML(open('https://www.otomoto.pl/osobowe/audi/a6/?page=' + current_page.to_s))
         product_tile = doc.css('div.offer-item__content')
         product_tile.each do |product|
-          item_info product
-          csv << [@item_year, @item_mileage, @item_engine_capacity, @item_fuel_type, @item_price]
+          hash = item_info product
+          csv << [hash['item_year'], hash['item_mileage'], hash['item_engine_capacity'], hash['item_fuel_type'], hash['item_price']]
         end
       end
     end
   end
 
   def item_info num
-    read_year num
-    read_mileage num
-    read_engine_capacity num
-    read_fuel_type num
-    read_price num
+    Hash["item_year" => read_year(num),
+    "item_mileage" => read_mileage(num),
+    "item_engine_capacity" => read_engine_capacity(num),
+    "item_fuel_type" => read_fuel_type(num),
+    "item_price" => read_price(num)]
   end
 
   def read_year num
-    @item_year = num.css('[data-code=year]')
+    num.css('[data-code=year]')
                      .text.gsub(/ +/, ' ').gsub(/\n/, '').strip
   end
 
   def read_mileage num
-    @item_mileage = num.css('[data-code=mileage]')
+    num.css('[data-code=mileage]')
                         .text.gsub(/ +/, ' ').gsub(/\n/, '').strip
   end
 
   def read_engine_capacity num
-    @item_engine_capacity = num.css('[data-code=engine_capacity]')
+    num.css('[data-code=engine_capacity]')
                                 .text.gsub(/ +/, ' ').gsub(/\n/, '').strip
   end
 
   def read_fuel_type num
-    @item_fuel_type = num.css('[data-code=fuel_type]')
+    num.css('[data-code=fuel_type]')
                           .text.gsub(/ +/, ' ').gsub(/\n/, '').strip
   end
 
   def read_price num
-    @item_price = num.css('div.offer-price span.offer-price__number')
+    num.css('div.offer-price span.offer-price__number')
                       .text.gsub(/ +/, ' ').gsub(/\n/, '').strip
   end
 
 end
-scraper = Scraper.new
-scraper.scrape
+# scraper = Scraper.new
+# scraper.scrape

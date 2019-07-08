@@ -1,7 +1,7 @@
 require 'test/unit'
 require_relative 'scraper'
 
-class TestScraper2 < Test::Unit::TestCase
+class TestScraper < Test::Unit::TestCase
 
   def setup
     @file = 'file.csv'
@@ -18,6 +18,67 @@ class TestScraper2 < Test::Unit::TestCase
     assert_operator CSV.foreach(@file).count, :>=, 1, 'file is empty'
   end
 
+  def test_correct_format
+    pages = 1..@scraper.read_number_of_pages
+    pages.each do |current_page|
+      doc = Nokogiri::HTML(open('https://www.otomoto.pl/osobowe/audi/a6/?page=' + current_page.to_s))
+      product_tile = doc.css('div.offer-item__content')
+      product_tile.each do |product|
+        test_read_year @scraper.read_year(product)
+        test_read_mileage @scraper.read_mileage(product)
+        test_read_engine_capacity @scraper.read_engine_capacity(product)
+        test_read_fuel_type @scraper.read_fuel_type(product)
+        test_read_price @scraper.read_price(product)
+      end
+    end
+  end
+
+  def test_read_year item
+    assert_match /(\A\d\d\d\d\z)|(\A\z)/, item.gsub(/\s+/, ''),
+                 'wrong year format (error read_year)'
+    if item.gsub(/\s+/, '') != ''
+      assert_operator item.gsub(/\s+/, '').to_i, :>=, 1910,
+                      'wrong year (the first Audi was created in 1910)'
+      assert_operator item.gsub(/\s+/, '').to_i, :<=, Time.now.year,
+                      "wrong year (greater than the current year #{Time.now.year})"
+    end
+  end
+
+  def test_read_mileage item
+    assert_match /(\A\d+[k][m]\z)|(\A\z)/i, item.gsub(/\s+/, ''),
+                 'wrong mileage format (error read_mileage)'
+    if item.gsub(/\s+/, '') != ''
+      assert_operator item.gsub(/\s+/, '').chomp('km').to_i, :>=, 1,
+                      'at least 1 km'
+    end
+  end
+
+  def test_read_engine_capacity item
+    assert_match /(\A\d+[c][m][3]\z)|(\A\z)/i, item.gsub(/\s+/, ''),
+                 'wrong engine capacity format (error read_engine_capacity)'
+    if item.gsub(/\s+/, '') != ''
+      assert_operator item.gsub(/\s+/, '').chomp('cm3').to_i, :>=, 1,
+                      'at least 1000cm3'
+    end
+  end
+
+  def test_read_fuel_type item
+    assert_match /(\A\D+\z)|(\A\z)/i, item.gsub(/\s+/, ''),
+                 'wrong fuel type format (error read_fuel_type)'
+  end
+
+  def test_read_price item
+    assert_match /(\A\d+[P][L][N]\z)|(\A\d+[,]\d+[P][L][N]\z)|(\A\d+[E][U][R]\z)|(\A\d+[,]\d+[E][U][R]\z)|(\A\z)/i, item.gsub(/\s+/, ''),
+                 'wrong price format (error read_price)'
+    if item.gsub(/\s+/, '') != ''
+      assert_operator item.gsub(/\s+/, '').chomp('PLN').to_i, :>=, 1,
+                      'at least 1 PLN'
+    end
+  end
+
+
+
+=begin
   def test_csv_year
     CSV.foreach(@file) do |row|
       assert_match /(\A\d\d\d\d\z)|(\A\z)/, row[0].gsub(/\s+/, ''), 'wrong format'
@@ -66,70 +127,6 @@ class TestScraper2 < Test::Unit::TestCase
     end
   end
 
-=begin
-  def test_correct_format
-    @scraper.read_number_of_pages
-    pages = 1..@number_of_pages
-    pages.each do |current_page|
-      doc = Nokogiri::HTML(open('https://www.otomoto.pl/osobowe/audi/a6/?page=' + current_page.to_s))
-      product_tile = doc.css('div.offer-item__content')
-      product_tile.each do |product|
-        @item_year = @scraper.read_year product
-        @item_mileage = @scraper.read_mileage product
-        @item_engine_capacity = @scraper.read_engine_capacity product
-        @item_fuel_type = @scraper.read_fuel_type product
-        @item_price = @scraper.read_price product
-        test_read_year @item_year
-        test_read_mileage @item_mileage
-        test_read_engine_capacity @item_engine_capacity
-        test_read_fuel_type @item_fuel_type
-        test_read_price @item_price
-      end
-    end
-  end
-
-  def test_read_year item
-    assert_match /(\A\d\d\d\d\z)|(\A\z)/, item.gsub(/\s+/, ''),
-                 'wrong year format (error read_year)'
-    if item.gsub(/\s+/, '') != ''
-      assert_operator item.gsub(/\s+/, '').to_i, :>=, 1910,
-                      'wrong year (the first Audi was created in 1910)'
-      assert_operator item.gsub(/\s+/, '').to_i, :<=, Time.now.year,
-                      "wrong year (greater than the current year #{Time.now.year})"
-    end
-  end
-
-  def test_read_mileage item
-    assert_match /(\A\d+[k][m]\z)|(\A\z)/i, item.gsub(/\s+/, ''),
-                 'wrong mileage format (error read_mileage)'
-    if item.gsub(/\s+/, '') != ''
-      assert_operator item.gsub(/\s+/, '').chomp('km').to_i, :>=, 1,
-                      'at least 1 km'
-    end
-  end
-
-  def test_read_engine_capacity item
-    assert_match /(\A\d+[c][m][3]\z)|(\A\z)/i, item.gsub(/\s+/, ''),
-                 'wrong engine capacity format (error read_engine_capacity)'
-    if item.gsub(/\s+/, '') != ''
-      assert_operator item.gsub(/\s+/, '').chomp('cm3').to_i, :>=, 1,
-                      'at least 1000cm3'
-    end
-  end
-
-  def test_read_fuel_type item
-    assert_match /(\A\D+\z)|(\A\z)/i, item.gsub(/\s+/, ''),
-                 'wrong fuel type format (error read_fuel_type)'
-  end
-
-  def test_read_price item
-    assert_match /(\A\d+[P][L][N]\z)|(\A\d+[,]\d+[P][L][N]\z)|(\A\d+[E][U][R]\z)|(\A\d+[,]\d+[E][U][R]\z)|(\A\z)/i, @item_price.gsub(/\s+/, ''),
-                 'wrong price format (error read_price)'
-    if item.gsub(/\s+/, '') != ''
-      assert_operator item.gsub(/\s+/, '').chomp('PLN').to_i, :>=, 1,
-                      'at least 1 PLN'
-    end
-  end
 =end
 
 end
