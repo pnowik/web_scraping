@@ -33,12 +33,13 @@ class Scraper
     end
   end
 
-  def item_info num
-    Hash["item_year" => read_year(num),
+  def item_info(num) {
+    "item_year" => read_year(num),
     "item_mileage" => read_mileage(num),
     "item_engine_capacity" => read_engine_capacity(num),
     "item_fuel_type" => read_fuel_type(num),
-    "item_price" => read_price(num)]
+    "item_price" => read_price(num)
+    }
   end
 
   def read_year num
@@ -67,5 +68,5 @@ class Scraper
   end
 
 end
-# scraper = Scraper.new
-# scraper.scrape
+ scraper = Scraper.new
+ scraper.scrape

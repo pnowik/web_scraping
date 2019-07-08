@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5cb1181-26e2-41ff-b419-9bda0dfac102" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/file.csv" beforeDir="false" afterPath="$PROJECT_DIR$/file.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scraper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/scraper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tc_scraper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/tc_scraper.rb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,20 +13,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tc_scraper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1122">
-              <caret line="57" column="68" lean-forward="true" selection-start-line="57" selection-start-column="68" selection-end-line="57" selection-end-column="68" />
+            <state relative-caret-position="418">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scraper.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-66">
-              <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+            <state relative-caret-position="1166">
+              <caret line="71" selection-start-line="71" selection-end-line="71" />
             </state>
           </provider>
         </entry>
@@ -36,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/file.csv">
           <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="-1542" />
+            <state relative-caret-position="-9836" />
           </provider>
           <provider editor-type-id="csv-table-editor">
             <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
@@ -62,8 +60,8 @@
         <option value="$PROJECT_DIR$/tc_main.rb" />
         <option value="$PROJECT_DIR$/tc_scraper2.rb" />
         <option value="$PROJECT_DIR$/scraper2.rb" />
-        <option value="$PROJECT_DIR$/scraper.rb" />
         <option value="$PROJECT_DIR$/tc_scraper.rb" />
+        <option value="$PROJECT_DIR$/scraper.rb" />
       </list>
     </option>
   </component>
@@ -125,15 +123,16 @@
       <option name="presentableId" value="Default" />
       <updated>1561537644160</updated>
       <workItem from="1561537645704" duration="16714000" />
-      <workItem from="1562568099421" duration="3541000" />
+      <workItem from="1562568099421" duration="4232000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20255000" />
+    <option name="totallyTimeSpent" value="20946000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-2" width="1920" height="1082" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10779082" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -194,25 +193,25 @@
     <entry file="file://$PROJECT_DIR$/tc_scraper2.rb" />
     <entry file="file://$PROJECT_DIR$/scraper2.rb" />
     <entry file="file://$PROJECT_DIR$/file2.csv" />
-    <entry file="file://$PROJECT_DIR$/scraper.rb">
+    <entry file="file://$PROJECT_DIR$/tc_scraper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66">
-          <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+        <state relative-caret-position="418">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/file.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="-1542" />
+        <state relative-caret-position="-9836" />
       </provider>
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tc_scraper.rb">
+    <entry file="file://$PROJECT_DIR$/scraper.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="57" column="68" lean-forward="true" selection-start-line="57" selection-start-column="68" selection-end-line="57" selection-end-column="68" />
+        <state relative-caret-position="1166">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
         </state>
       </provider>
     </entry>
